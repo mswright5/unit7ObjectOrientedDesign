@@ -19,7 +19,7 @@ public class Billfold
     }
     
     public void addCard(Card card)
-    {
+    {   
         if (cards[0] == null){
             cards[0] = card;
         }
