@@ -1,4 +1,4 @@
-
+import java.util.GregorianCalendar;
 
 /**
  * Write a description of class DriverLicense here.
@@ -9,15 +9,28 @@
 public class DriverLicense extends Card
 {
     /** The year the card expires */
-    private String expiration;
+    private int expiration;
 
     /**
      * Default constructor for objects of class DriverLicense
      */
-    public DriverLicense(String n, String expire)
+    public DriverLicense(String n, int expire)
     {
         super(n);
         expiration = expire;
+    }
+    
+    public boolean isExpired()
+    {
+        GregorianCalendar calendar = new GregorianCalendar();
+        if (expiration < calendar.get(calendar.YEAR))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -27,7 +40,7 @@ public class DriverLicense extends Card
      */
     public String format()
     {
-        return super.format() + "/nExpiration: " + this.expiration;
+        return super.format() + "\nExpiration: " + this.expiration;
     }
 
 }

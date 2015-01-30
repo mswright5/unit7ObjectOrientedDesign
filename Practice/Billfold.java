@@ -1,5 +1,4 @@
 
-
 /**
  * Holds 2 cards
  * 
@@ -9,29 +8,28 @@
 public class Billfold
 {
     /** The two cards */
-    private Card[] cards;
-
+    private static Card[] cards;
     /**
      * Default constructor for objects of class Billfold
      */
     public Billfold()
     {
+        cards = new Card[2];
     }
-    
+
     public void addCard(Card card)
     {   
         if (cards[0] == null){
             cards[0] = card;
         }
-        
+
         else{
             cards[1] = card;
         }
     }
-    
+
     public String formatCards()
     {
-        return cards[0].format() + "\n" + cards[1].format();
+        return cards[0].format() + "\n\n" + cards[1].format();
     }
-
 }

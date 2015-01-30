@@ -29,7 +29,7 @@ public class CallingCard extends Card
      */
     public String format()
     {
-        return super.format() + "/nCard Number: " + this.number + " /nPin: " + this.pin;
+        return super.format() + "\nCard Number: " + this.number + " \nPin: " + this.pin;
     }
 
 }

@@ -28,7 +28,7 @@ public class IDCard extends Card
      */
     public String format()
     {
-        return super.format() + "/nID: " + this.idNumber;
+        return super.format() + "\nID: " + this.idNumber;
     }
 
 }

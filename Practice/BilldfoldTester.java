@@ -12,11 +12,11 @@ public class BilldfoldTester
     public static void main()
     {
         IDCard idcard = new IDCard("ID CARD", "12345");
-        DriverLicense driverCard = new DriverLicense("Driver's License", "October 28, 1998");
+        DriverLicense driverCard = new DriverLicense("Driver's License", 1998);
         Billfold bill = new Billfold();
         bill.addCard(idcard);
         bill.addCard(driverCard);
-        
+        System.out.println(bill.formatCards());
     }
 
 }
