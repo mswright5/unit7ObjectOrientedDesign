@@ -21,6 +21,16 @@ public class CallingCard extends Card
         number = num;
         this.pin = pin;
     }
+    
+    public boolean equals(Card other)
+    {
+        if(this.toString().equals(other.toString()))
+        {
+            return true;
+        }
+        
+        return false;
+    }
 
     /**
      * Returns the formatted version of this class's description
@@ -30,6 +40,10 @@ public class CallingCard extends Card
     public String format()
     {
         return super.format() + "\nCard Number: " + this.number + " \nPin: " + this.pin;
+    }
+    
+    public String toString(){
+        return "DriverLicense[Name:\""+getName()+"\"][Number:"+number+",Pin:"+pin;
     }
 
 }

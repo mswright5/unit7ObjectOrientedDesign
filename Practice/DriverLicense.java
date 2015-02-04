@@ -32,6 +32,16 @@ public class DriverLicense extends Card
             return false;
         }
     }
+    
+    public boolean equals(Card other)
+    {
+        if(this.toString().equals(other.toString()))
+        {
+            return true;
+        }
+        
+        return false;
+    }
 
     /**
      * Returns the formatted version of this class's description
@@ -41,6 +51,10 @@ public class DriverLicense extends Card
     public String format()
     {
         return super.format() + "\nExpiration: " + this.expiration;
+    }
+    
+    public String toString(){
+        return "DriverLicense[Name:\""+getName()+"\"][Expiration:"+expiration;
     }
 
 }

@@ -17,6 +17,7 @@ public class BilldfoldTester
         bill.addCard(idcard);
         bill.addCard(driverCard);
         System.out.println(bill.formatCards());
+        System.out.println("\n\nNumber of expired cards: " + bill.getExpiredCardCount());
     }
 
 }

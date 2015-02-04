@@ -9,12 +9,14 @@ public class Billfold
 {
     /** The two cards */
     private static Card[] cards;
+    private int numExpired;
     /**
      * Default constructor for objects of class Billfold
      */
     public Billfold()
     {
         cards = new Card[2];
+        numExpired = 0;
     }
 
     public void addCard(Card card)
@@ -26,6 +28,17 @@ public class Billfold
         else{
             cards[1] = card;
         }
+    }
+    
+    public int getExpiredCardCount()
+    {
+        for (int i = 0; i < cards.length; i++){
+            if(cards[i].isExpired()){
+                numExpired++;
+            }
+        }
+        
+        return numExpired;
     }
 
     public String formatCards()

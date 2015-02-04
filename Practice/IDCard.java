@@ -20,6 +20,16 @@ public class IDCard extends Card
         super(n);
         idNumber = id;
     }
+    
+    public boolean equals(Card other)
+    {
+        if(this.toString().equals(other.toString()))
+        {
+            return true;
+        }
+        
+        return false;
+    }
 
     /**
      * Returns the formatted version of this class's description
@@ -29,6 +39,10 @@ public class IDCard extends Card
     public String format()
     {
         return super.format() + "\nID: " + this.idNumber;
+    }
+    
+    public String toString(){
+        return "IDCard[Name:\""+getName()+"\"][idNumber:"+idNumber;
     }
 
 }
