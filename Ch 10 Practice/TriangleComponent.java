@@ -2,7 +2,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import javax.swing.JComponent;
-import java.util.Random;
+import javax.swing.JFrame;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 
 /**
  * Class that creates instances of the classes that comprise the triangle and delegates drawing the
@@ -13,14 +15,63 @@ import java.util.Random;
  */
 public class TriangleComponent extends JComponent
 {
+    private int[] points;
+    public TriangleComponent()
+    {
+        points = new int[6];
+        this.addMouseListener(new MousePressListener());
+    }
+    
     /**
      * Allows the city to be viewed
      */
     public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;
-        Random generator = new Random();
         
+        Triangle triangle = new Triangle();
+        triangle.draw(g2);
+        g2.setColor(Color.BLUE);
+        
+    }
+    
+    class MousePressListener implements MouseListener
+    {
+        public void mousePressed(MouseEvent event)
+        {
+            int x = event.getX();
+            int y = event.getY();
+            if(points[0] == 0){
+                points[0] = x;
+                points[1] = y;
+            }
+            
+            if(points[2] == 0){
+                points[2] = x;
+                points[3] = y;
+            }
+            
+            if(points[4] == 0){
+                points[4] = x;
+                points[5] = y;
+            }
+            else{
+                for(int i = 0; i < points.length; i++)
+                {
+                    points[i] = 0;
+                }
+            }
+            
+            repaint();
+        }
+        
+        public void mouseReleased(MouseEvent event){}
+        
+        public void mouseClicked(MouseEvent event){}
+        
+        public void mouseEntered(MouseEvent event){}
+        
+        public void mouseExited(MouseEvent event){}
     }
 
 }
