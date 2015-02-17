@@ -21,20 +21,25 @@ public class TriangleComponent extends JComponent
         points = new int[6];
         this.addMouseListener(new MousePressListener());
     }
-    
+
     /**
      * Allows the city to be viewed
      */
     public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;
-        
-        Triangle triangle = new Triangle();
-        triangle.draw(g2);
+
+        Triangle triangle = new Triangle(points);
+        boolean drawTriangle = true;
+        for(int i = 0; i < points.length; i++)
+        {
+            if(points[i] == 0){drawTriangle = false;break;}
+        }
+        if(drawTriangle){triangle.draw(g2);}
         g2.setColor(Color.BLUE);
-        
+
     }
-    
+
     class MousePressListener implements MouseListener
     {
         public void mousePressed(MouseEvent event)
@@ -45,13 +50,13 @@ public class TriangleComponent extends JComponent
                 points[0] = x;
                 points[1] = y;
             }
-            
-            if(points[2] == 0){
+
+            else if(points[2] == 0){
                 points[2] = x;
                 points[3] = y;
             }
-            
-            if(points[4] == 0){
+
+            else if(points[4] == 0){
                 points[4] = x;
                 points[5] = y;
             }
@@ -61,16 +66,16 @@ public class TriangleComponent extends JComponent
                     points[i] = 0;
                 }
             }
-            
+
             repaint();
         }
-        
+
         public void mouseReleased(MouseEvent event){}
-        
+
         public void mouseClicked(MouseEvent event){}
-        
+
         public void mouseEntered(MouseEvent event){}
-        
+
         public void mouseExited(MouseEvent event){}
     }
 

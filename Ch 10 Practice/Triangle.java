@@ -22,19 +22,23 @@ public class Triangle
         points = new double[6];
         for(int i = 0; i < point.length; i++)
         {
-            points[1] = point[i];
+            points[i] = point[i];
         }
     }
-    
+
     /**
-     * Draws the Road onto the Graphics2D object
+     * Draws the triangle onto the Graphics2D object
      */
     public void draw(Graphics2D g2)
     {        
-        Line2D.Double line1 = new Line2D.Double(points[0],points[1]);
-        Line2D.Double line2 = new Line2D.Double(points[1],points[2]);
-        Line2D.Double line3 = new Line2D.Double(points[2],points[0]);
-        
+        //create the three sides of the triangle
+        Line2D.Double line1 = new Line2D.Double(new Point2D.Double(points[0],points[1]),
+                                                new Point2D.Double(points[2], points[3]));
+        Line2D.Double line2 = new Line2D.Double(new Point2D.Double(points[2],points[3]),
+                                                new Point2D.Double(points[4], points[5]));
+        Line2D.Double line3 = new Line2D.Double(new Point2D.Double(points[4],points[5]),
+                                                new Point2D.Double(points[0], points[1]));
+                                     
         g2.draw(line1);
         g2.draw(line2);
         g2.draw(line3);
