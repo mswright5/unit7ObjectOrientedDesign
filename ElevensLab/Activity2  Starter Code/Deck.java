@@ -32,7 +32,7 @@ public class Deck {
         cards = new ArrayList<Card>();
         for(int i = 0; i <ranks.length; i++){
             for(String suit : suits){                
-                cards.add(new Card(ranks[i],suits[i],values[i]));   
+                cards.add(new Card(ranks[i],suit,values[i]));   
             }
         }
         size = cards.size();
