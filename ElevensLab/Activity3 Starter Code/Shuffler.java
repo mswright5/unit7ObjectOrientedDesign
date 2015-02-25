@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -7,7 +8,7 @@ public class Shuffler {
      * The number of consecutive shuffle steps to be performed in each call
      * to each sorting procedure.
      */
-    private static final int SHUFFLE_COUNT = 1;
+    private static final int SHUFFLE_COUNT = 5;
 
     /**
      * Tests shuffling methods.
@@ -48,17 +49,19 @@ public class Shuffler {
      * @param values is an array of integers simulating cards to be shuffled.
      */
     public static void perfectShuffle(int[] values) {
-        int[] shuffled = new int[52];
+        int[] shuffled = new int[values.length];
         int k = 0;
-        for(int j = 0; j < values.length; j++){
+        for(int j = 0; j < values.length/2; j++){
             shuffled[k] = values[j];
             k = k+2;
         }
         k=1;
-        for(int j = 26; j < values.length; j++){
+        for(int j = values.length/2; j < values.length; j++){
             shuffled[k] = values[j];
             k = k+2;
         }
+        
+        values = shuffled;
     }
 
     /**
@@ -73,17 +76,12 @@ public class Shuffler {
      * @param values is an array of integers simulating cards to be shuffled.
      */
     public static void selectionShuffle(int[] values) {
-        int[] shuffled = new int[52];
-        for(int k = values.length; k > 0; k--){
-            int r = (int)Math.random()*10;
-            r = r+k;
-            
-            while(values[r] == 0){
-                r = (int)Math.random()*10;
-                r = r+k;
-            }
-            
-            values[r] = shuffled[k];
+        Random generator = new Random();
+        for(int k = values.length - 1; k > 0; k--){
+            int r = generator.nextInt(k);
+            int temp = values[k];
+            values[k] = values[r];
+            values[r] = temp;
         }
     }
 }
